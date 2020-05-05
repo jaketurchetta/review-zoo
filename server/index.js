@@ -22,7 +22,7 @@ app.get('/products/:productid/reviews', (req, res) => {
   db.findReviews(req.params.productid, res);
 })
 
-// GET IMAGES PER REVIEW
-app.get('/products/:productid/reviews/:reviewid', (req, res) => {
-  db.findReviews(req.params.reviewid, res);
+// GET RATINGS
+app.get('/products/:productid/ratings', (req, res) => {
+  db.findRatings(req.params.productid, res);
 })

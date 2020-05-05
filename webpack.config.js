@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'development',
   entry: __dirname + '/client/src/index.jsx',
   module: {
     rules: [
@@ -14,8 +15,11 @@ module.exports = {
       }
     ]
   },
-   output: {
+  output: {
     filename: 'bundle.js',
     path: __dirname + '/client/dist'
+  },
+  resolve: {
+    extensions: ['.js', '.json', '.jsx', '.css']
   }
 };

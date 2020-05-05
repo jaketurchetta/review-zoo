@@ -4,7 +4,6 @@ const {genericQueryHandler} = require('./handlers.js');
 
 var db = mysql.createConnection(mysqlConfig);
 
-
 module.exports = {
   findReviews: (id, res) => {
     db.query(`SELECT a.id as id,
@@ -28,7 +27,17 @@ module.exports = {
                 WHERE product_id = ${id}
                 LIMIT 10`, genericQueryHandler(res));
   },
-  findReviewImages: (id, res) => {
-    db.query(`SELECT * FROM images WHERE review_id = ${id}`, genericQueryHandler(res));
+  findRatings:(id, res) => {
+    db.query(`SELECT product_id,
+                    count(*) AS total_ratings,
+                    avg(rating) AS average_rating,
+                    sum(case when rating = 0 then 1 else 0 end) AS zero_stars,
+                    sum(case when rating = 1 then 1 else 0 end) AS one_stars,
+                    sum(case when rating = 2 then 1 else 0 end) AS two_stars,
+                    sum(case when rating = 3 then 1 else 0 end) AS three_stars,
+                    sum(case when rating = 4 then 1 else 0 end) AS four_stars,
+                    sum(case when rating = 5 then 1 else 0 end) AS five_stars
+                FROM reviews
+                WHERE product_id = ${id}`, genericQueryHandler(res));
   }
 }
