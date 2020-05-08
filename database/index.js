@@ -27,7 +27,7 @@ module.exports = {
                 WHERE product_id = ${id}
                 LIMIT 10`, genericQueryHandler(res));
   },
-  findRatings:(id, res) => {
+  findRatings: (id, res) => {
     db.query(`SELECT product_id,
                     count(*) AS total_ratings,
                     avg(rating) AS average_rating,
@@ -39,5 +39,10 @@ module.exports = {
                     sum(case when rating = 5 then 1 else 0 end) AS five_stars
                 FROM reviews
                 WHERE product_id = ${id}`, genericQueryHandler(res));
+  },
+  incrementHelpful: (id, res) => {
+    db.query(`UPDATE reviews
+              SET helpful = helpful + 1
+              WHERE id = ${id}`, genericQueryHandler(res));
   }
 }

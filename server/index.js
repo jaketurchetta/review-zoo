@@ -16,7 +16,6 @@ app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded({ extended: true }) );
 app.use( express.static(__dirname + '/../client/dist') );
 
-
 // GET REVIEWS
 app.get('/products/:productid/reviews', (req, res) => {
   db.findReviews(req.params.productid, res);
@@ -25,4 +24,9 @@ app.get('/products/:productid/reviews', (req, res) => {
 // GET RATINGS
 app.get('/products/:productid/ratings', (req, res) => {
   db.findRatings(req.params.productid, res);
+})
+
+// ADD TO HELPFUL
+app.put('/products/:productid/reviews/:reviewid', (req, res) => {
+  db.incrementHelpful(req.params.reviewid, res);
 })

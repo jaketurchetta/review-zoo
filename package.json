@@ -11,7 +11,8 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "seed": "mysql -u root < schema.sql",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "node_modules/.bin/jest --coverage"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -23,6 +24,8 @@
     "nodemon": "^2.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-is": "^16.13.1",
+    "styled-components": "^5.1.0",
     "underscore": "^1.10.2"
   },
   "devDependencies": {
@@ -31,12 +34,15 @@
     "@babel/preset-react": "^7.9.4",
     "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^26.0.1",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
+    "react-star-ratings": "^2.3.0",
+    "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   }

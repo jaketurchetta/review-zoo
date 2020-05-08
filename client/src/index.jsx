@@ -4,38 +4,48 @@ import axios from 'axios';
 import {Promise} from 'bluebird';
 import ProductReviewsList from './components/ProductReviewsList.jsx';
 import SummaryRatings from './components/SummaryRatings.jsx';
+import styled from 'styled-components';
+
+const AppWrapper = styled.div`
+  font-family: 'Amazon Ember', Arial, sans-serif;
+  display: flex;
+  color: #111111;
+`;
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      status: '',
       product_id: 10,
       reviews: [],
-      ratings: []
+      ratings: [],
+      clicked: false
     };
 
     this.getReviews = this.getReviews.bind(this);
     this.setReviews = this.setReviews.bind(this);
     this.getRatings = this.getRatings.bind(this);
     this.setRatings = this.setRatings.bind(this);
+    this.refreshReviews = this.refreshReviews.bind(this);
+    this.incrementHelpful = this.incrementHelpful.bind(this);
 
   }
 
   // LIFECYCLE METHODS
   componentDidMount() {
-    Promise.all([
+
+    let fetches = [
       this.getRatings(this.state.product_id),
       this.getReviews(this.state.product_id)
-    ]).then(([res1, res2]) => {
-      Promise.all([res1.json(), res2.json()])
-    }).then(([data1, data2]) => {
-      this.setState({
-        ratings: data1,
-        reviews: data2
+    ]
+
+    Promise.all(fetches).then((values) => {
+       this.setState({
+        ratings: values[0].data[0],
+        reviews: values[1].data
       })
-    })
+     })
   }
 
   // SETTERS
@@ -52,31 +62,35 @@ class App extends React.Component {
     console.log(error)
   }
 
-  // GET REQUESTS
+  // HTTP REQUESTS - FOR COMPONENT DID MOUNT
   getReviews(productid) {
-    axios.get(`/products/${productid}/reviews`)
+    return axios.get(`/products/${productid}/reviews`)
   }
 
   getRatings(productid) {
-    axios.get(`/products/${productid}/ratings`)
+    return axios.get(`/products/${productid}/ratings`)
+  }
+
+  // HTTP REQUESTS - OTHER
+  refreshReviews(productid) {
+    axios.get(`/products/${productid}/reviews`)
+      .then(this.setReviews)
+      .catch(this.handleError)
+  }
+
+  incrementHelpful(reviewid) {
+    axios.put(`/products/${this.state.product_id}/reviews/${reviewid}`)
+      .then(this.refreshReviews(this.state.product_id))
+      .catch(this.handleError)
   }
 
   // RENDER MODULE
   render() {
-    // console.log(this.state.ratings)
-    // console.log(this.state.reviews)
     return (
-      <div>
-
-        <div>
-          <h3 className="summary">Customer Reviews</h3>
-          <SummaryRatings ratings={this.state.ratings} />
-        </div>
-        <div className="main">
-          <ProductReviewsList reviews={this.state.reviews} />
-        </div>
-
-      </div>
+      <AppWrapper>
+        <SummaryRatings ratings={this.state.ratings} />
+        <ProductReviewsList reviews={this.state.reviews} helpfulHandler={this.incrementHelpful}/>
+      </AppWrapper>
     )
   }
 

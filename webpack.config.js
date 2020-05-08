@@ -12,8 +12,11 @@ module.exports = {
             presets: ['@babel/preset-react', '@babel/preset-env']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader']
       }
-    ]
   },
   output: {
     filename: 'bundle.js',
