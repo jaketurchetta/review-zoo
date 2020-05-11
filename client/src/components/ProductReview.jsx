@@ -57,23 +57,7 @@ const VerifiedPurchase = styled.span`
 const ReviewText = styled.div`
   display: box;
   line-height: 19px;
-  max-height: 190px;
-  overflow: hidden;
   padding: 0px 0px 10px;
-`;
-
-const ContentFade = styled.div`
-  height: 16px;
-  top: -16px;
-`;
-
-const ReadMore = styled.p`
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  text-align: left;
-  background: linear-gradient(to bottom,rgba(255,255,255,0),#fff);
 `;
 
 const HelpfulNumber = styled.div`
@@ -102,6 +86,51 @@ const ThankYou = styled.span`
   color: #007600;
 `;
 
+const ShowText = styled.div`
+  max-height: 5000px;
+`;
+
+const HideText = styled.div`
+  max-height: 190px;
+  overflow: hidden;
+`;
+
+const ReadMore = styled.a`
+  color: #0066C0;
+`;
+
+const DownArrow = styled.i`
+  border: solid #555555;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 2px;
+  transform: rotate(45deg);
+`;
+
+const UpArrow = styled.i`
+  border: solid #555555;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 2px;
+  transform: rotate(225deg);
+`;
+
+const ContentFade = styled.div`
+  height: 16px;
+  top: -16px;
+`;
+
+const ReadMoreLess = styled.div`
+  color: #0066C0;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+`;
+
+const LinkText = styled.span`
+  padding: 0px 0px 0px 5px;
+`;
+
 // CLASS COMPONENT
 
 class ProductReview extends React.Component {
@@ -109,11 +138,16 @@ class ProductReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      clicked: false
+      clicked: false,
+      readMore: false
     }
     this.handleEnter = this.handleEnter.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClick = this.handleClick.bind(this);
+    this.changeHeight = this.changeHeight.bind(this);
+    this.handleReadMoreEnter = this.handleReadMoreEnter.bind(this);
+    this.handleReadMoreLeave = this.handleReadMoreLeave.bind(this);
+    this.handleReadMoreClick = this.handleReadMoreClick.bind(this);
   }
 
   handleEnter(event) {
@@ -132,6 +166,35 @@ class ProductReview extends React.Component {
       clicked: true
     });
   }
+
+  handleReadMoreEnter(event) {
+    event.target.style.textDecoration = 'underline';
+    event.target.style.color = '#C45500';
+    event.target.style.cursor = 'pointer';
+  }
+
+  handleReadMoreLeave(event) {
+    event.target.style.textDecoration = '';
+    event.target.style.color = '#0066C0';
+    event.target.style.cursor = 'default';
+  }
+
+  handleReadMoreClick() {
+    this.setState({
+      readMore: !this.state.readMore
+    })
+  }
+
+  changeHeight() {
+    var readmore = $('#readmore');
+    if (readmore.text() == 'Read more') {
+        readmore.text("Read less");
+    } else {
+        readmore.text("Read more");
+    }
+
+    $('.height').toggleClass("heightAuto");
+};
 
   render() {
     return (
@@ -180,9 +243,14 @@ class ProductReview extends React.Component {
           {this.props.verified === 1 ? (<VerifiedPurchase>Verified Purchase</VerifiedPurchase>) : (null)}
         </ReviewSpecs>
 
-        <ReviewText>
-          {this.props.body}
-        </ReviewText>
+        {this.state.readMore ? (<ReviewText>
+                        <ShowText>{this.props.body}</ShowText>
+                        <ReadMoreLess><UpArrow></UpArrow><LinkText onMouseEnter={this.handleReadMoreEnter} onMouseLeave={this.handleReadMoreLeave} onClick={this.handleReadMoreClick}>Read less</LinkText></ReadMoreLess>
+                      </ReviewText>)
+                  : (<ReviewText>
+                    <HideText>{this.props.body}</HideText>
+                    <ReadMoreLess><DownArrow></DownArrow><LinkText onMouseEnter={this.handleReadMoreEnter} onMouseLeave={this.handleReadMoreLeave} onClick={this.handleReadMoreClick}>Read more</LinkText></ReadMoreLess>
+                  </ReviewText>)}
 
         <div>
           <HelpfulNumber>

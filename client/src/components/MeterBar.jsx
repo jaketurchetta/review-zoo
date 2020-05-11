@@ -1,26 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const OuterRect = styled.rect`
-  border-radius: 1px;
-  overflow: hidden;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.4), inset 0 0 0 1px rgba(0,0,0,.1);
-  background-color: #f3f3f3;
+const SVG = styled.svg`
   height: 17px;
-  width: 100px;
-  box-sizing: border-box;
+  width: 190px;
 `;
 
-const InnerRect = styled.rect`
-  border-radius: 1px;
-
-  background-color: #ffce00;
-  transition: width .5s ease;
-  float: left;
-  font-size: 0;
-  height: 100%;
-  box-sizing: border-box;
+const OuterRect = styled.div`
+  position: absolute;
+  height: 17px;
+  width: 190px;
+  background-color: #f3f3f3;
 `;
+
+const InnerRect = styled.div`
+  position: absolute;
+  height: 17px;
+  background-color: #FFCE00;
+`;
+
+//fill: #ffce00;
 
 const Meter = (props) => {
   var {
@@ -37,10 +36,25 @@ const Meter = (props) => {
   var w = percent ? Math.max(height, width * Math.min(percent, 1)) : 0;
   var style = animate ? { "transition": "width 500ms, fill 250ms" } : null;
 
+  let innerRect = {
+    fill: '#ffce00',
+    // stroke: 'black',
+    // strokeWidth: '1px',
+    transition: 'width 500ms, fill 250ms',
+  }
+
+  let outerRect = {
+    fill: '#f3f3f3',
+    height: '17px',
+    width: '190px',
+    // stroke: 'black',
+    // strokeWidth: '1px'
+  }
+
   return (
-    <svg width={width} height={height} aria-label={label} data-tooltip={label}>
-      <rect width={width} height={height} fill="#f3f3f3" rx={r} ry={r} />
-      <rect width={w} height={height} fill={color} rx={r} ry={r} style={style}/>
+    <svg height={height} width={width}>
+      <rect height={height} width={width} style={outerRect}/>
+      <rect height={height} width={w} style={innerRect} />
     </svg>
   );
 

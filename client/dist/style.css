@@ -1,0 +1,9 @@
+.text {
+  overflow:hidden;
+}
+.height {
+  max-height:190px;
+}
+.heightAuto {
+  max-height:5000px;
+}

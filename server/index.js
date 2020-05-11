@@ -17,8 +17,12 @@ app.use( bodyParser.urlencoded({ extended: true }) );
 app.use( express.static(__dirname + '/../client/dist') );
 
 // GET REVIEWS
-app.get('/products/:productid/reviews', (req, res) => {
-  db.findReviews(req.params.productid, res);
+app.get('/products/:productid/topreviews', (req, res) => {
+  db.findTopReviews(req.params.productid, res);
+})
+
+app.get('/products/:productid/recentreviews', (req, res) => {
+  db.findRecentReviews(req.params.productid, res);
 })
 
 // GET RATINGS

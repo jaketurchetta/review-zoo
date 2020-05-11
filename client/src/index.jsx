@@ -20,15 +20,15 @@ class App extends React.Component {
       product_id: 10,
       reviews: [],
       ratings: [],
-      clicked: false
+      filter: 'Top Reviews'
     };
 
     this.getReviews = this.getReviews.bind(this);
     this.setReviews = this.setReviews.bind(this);
     this.getRatings = this.getRatings.bind(this);
-    this.setRatings = this.setRatings.bind(this);
     this.refreshReviews = this.refreshReviews.bind(this);
     this.incrementHelpful = this.incrementHelpful.bind(this);
+    this.selectDropdown = this.selectDropdown.bind(this);
 
   }
 
@@ -53,10 +53,6 @@ class App extends React.Component {
     this.setState({reviews: data});
   }
 
-  setRatings({data}) {
-    this.setState({ratings: data});
-  }
-
   // ERROR HANDLING
   handleError(error) {
     console.log(error)
@@ -64,7 +60,11 @@ class App extends React.Component {
 
   // HTTP REQUESTS - FOR COMPONENT DID MOUNT
   getReviews(productid) {
-    return axios.get(`/products/${productid}/reviews`)
+    if (this.state.filter === 'Top Reviews') {
+      return axios.get(`/products/${productid}/topreviews`)
+    } else if (this.state.filter === 'Most Recent') {
+      return axios.get(`/products/${productid}/recentreviews`)
+    }
   }
 
   getRatings(productid) {
@@ -73,9 +73,15 @@ class App extends React.Component {
 
   // HTTP REQUESTS - OTHER
   refreshReviews(productid) {
-    axios.get(`/products/${productid}/reviews`)
-      .then(this.setReviews)
-      .catch(this.handleError)
+    if (this.state.filter === 'Top Reviews') {
+      axios.get(`/products/${productid}/topreviews`)
+        .then(this.setReviews)
+        .catch(this.handleError)
+    } else if (this.state.filter === 'Most Recent') {
+      axios.get(`/products/${productid}/recentreviews`)
+        .then(this.setReviews)
+        .catch(this.handleError)
+    }
   }
 
   incrementHelpful(reviewid) {
@@ -84,12 +90,35 @@ class App extends React.Component {
       .catch(this.handleError)
   }
 
+  selectDropdown(selection) {
+    if (selection === 'Top Reviews') {
+      axios.get(`/products/${this.state.product_id}/topreviews`)
+        .then(this.setReviews)
+        .then(this.setState({
+          filter: 'Top Reviews'
+        }))
+        .catch(this.handleError)
+    } else if (selection === 'Most Recent') {
+      axios.get(`/products/${this.state.product_id}/recentreviews`)
+        .then(this.setReviews)
+        .then(this.setState({
+          filter: 'Most Recent'
+        }))
+        .catch(this.handleError)
+    }
+  }
+
   // RENDER MODULE
   render() {
     return (
       <AppWrapper>
         <SummaryRatings ratings={this.state.ratings} />
-        <ProductReviewsList reviews={this.state.reviews} helpfulHandler={this.incrementHelpful}/>
+        <ProductReviewsList
+          productid={this.state.product_id}
+          reviews={this.state.reviews}
+          helpfulHandler={this.incrementHelpful}
+          filter={this.state.filter}
+          handleSelection={this.selectDropdown}/>
       </AppWrapper>
     )
   }
