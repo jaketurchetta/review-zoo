@@ -25,7 +25,7 @@ const DropDownLi = styled.div`
 `;
 
 const Dropbtn = styled.div`
-  padding: 4px 65px 4px 4px;
+  padding: 4px 4px 4px 4px;
   background-color: #F5F5F5;
   color: black;
   font-family: 'Amazon Ember', Arial, sans-serif;
@@ -33,6 +33,7 @@ const Dropbtn = styled.div`
   border-radius: 3px;
   border: 1px solid #A9A9A9;
   display: flex;
+  align-items: center;
 `;
 
 const DropDownContent = styled.div`
@@ -87,15 +88,19 @@ const UpArrow = styled.i`
 
 const FilterArrow = styled.i`
   border: solid #555555;
-  border-width: 0 1px 1px 0;
-  display: inline-block;
-  padding: 4px;
-  transform: rotate(45deg);
-  left-margin: 20px;
+  border-width: 0 2px 2px 0;
+  vertical-align: middle;
   display: flex;
-  align-self: flex-end;
-  float: right;
+  justify-content: flex-end;
+  padding: 3px;
+  transform: rotate(45deg);
 `;
+
+const FilterSpan = styled.span`
+  padding-right: 50px;
+`;
+
+const ButtonDiv = styled.div``;
 
 class ProductReviewsList extends React.Component {
 
@@ -125,13 +130,13 @@ class ProductReviewsList extends React.Component {
         </KeywordsDiv>
 
         <DropDownLi>
-          <Dropbtn onClick={() => this.props.handleButtonClick()} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}><span>{this.props.filter}</span><FilterArrow></FilterArrow></Dropbtn>
+          <ButtonDiv onClick={() => this.props.handleButtonClick()} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>
+            <Dropbtn><FilterSpan>{this.props.filter}</FilterSpan><FilterArrow></FilterArrow></Dropbtn>
+          </ButtonDiv>
           {this.props.filterClicked ? (<DropDownContent>
                                           <SubA onClick={() => this.props.handleSelection('Top Reviews')}>Top Reviews</SubA>
                                           <SubA onClick={() => this.props.handleSelection('Most Recent')}>Most Recent</SubA>
                                         </DropDownContent>)
-                                    : (null)}
-          {this.props.filterClicked ? console.log('Should be true: ', this.props.filterClicked)
                                     : (null)}
         </DropDownLi>
 

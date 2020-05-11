@@ -73,7 +73,6 @@ const HowAmazonCalculates = styled.div`
   font-size: 13px;
   display: flex;
   align-items: center;
-  padding 10px 0px 0px;
 `;
 
 const LinkText = styled.span`
@@ -102,13 +101,23 @@ const FeaturesDiv = styled.div`
 `;
 
 const FeatureRow = styled.div`
+  vertical-align: middle;
+  margin-bottom: 14px;
   display: flex;
-  align-items: center;
+  justify-content: stretch;
 `;
 
-const FeatureSpan = styled.span`
+const FeatureSpan = styled.div`
   font-size: 13px;
+  width: 171px;
   color: #111111
+  display: flex;
+  justify-content: flex-start;
+`;
+
+const JustifyRight = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const ReviewHeader = styled.h3`
@@ -135,13 +144,9 @@ const WriteReviewButton = styled.button`
 const FeatureNumberSpan = styled.span`
   color: #767676;
   font-size: 13px;
+  padding-left 4px;
 `;
 
-const JustifyRight = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-`;
 
 class SummaryRatings extends React.Component {
 
@@ -263,17 +268,17 @@ class SummaryRatings extends React.Component {
         <FeaturesDiv>
           <FeatureRow>
             <FeatureSpan>Aliquid rem</FeatureSpan>
-            <JustifyRight>
-              <StarRatings
-                    rating={4.7}
-                    starRatedColor='#FFCE00'
-                    numberOfStars={5}
-                    name='rating'
-                    starDimension='17px'
-                    starSpacing='0px'
-                  />
-              <FeatureNumberSpan>4.7</FeatureNumberSpan>
-            </JustifyRight>
+              <JustifyRight>
+                <StarRatings
+                      rating={4.7}
+                      starRatedColor='#FFCE00'
+                      numberOfStars={5}
+                      name='rating'
+                      starDimension='17px'
+                      starSpacing='0px'
+                    />
+                <FeatureNumberSpan>4.7</FeatureNumberSpan>
+              </JustifyRight>
           </FeatureRow>
           <FeatureRow>
             <FeatureSpan>Quae deleniti ut</FeatureSpan>

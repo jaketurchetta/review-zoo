@@ -116,13 +116,19 @@ const UpArrow = styled.i`
 `;
 
 const ContentFade = styled.div`
-  height: 16px;
-  top: -16px;
+  top: -25px;
+  height: 25px;
+  width: 100%;
+  position: relative;
+  left: 0;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom,rgba(255,255,255,0),#fff);
 `;
 
 const ReadMoreLess = styled.div`
   color: #0066C0;
   font-size: 13px;
+  position: relative;
   display: flex;
   align-items: center;
 `;
@@ -244,20 +250,21 @@ class ProductReview extends React.Component {
         </ReviewSpecs>
 
         {this.state.readMore ? (<ReviewText>
-                        <ShowText>{this.props.body}</ShowText>
-                        <ReadMoreLess><UpArrow></UpArrow><LinkText onMouseEnter={this.handleReadMoreEnter} onMouseLeave={this.handleReadMoreLeave} onClick={this.handleReadMoreClick}>Read less</LinkText></ReadMoreLess>
-                      </ReviewText>)
-                  : (<ReviewText>
-                    <HideText>{this.props.body}</HideText>
-                    <ReadMoreLess><DownArrow></DownArrow><LinkText onMouseEnter={this.handleReadMoreEnter} onMouseLeave={this.handleReadMoreLeave} onClick={this.handleReadMoreClick}>Read more</LinkText></ReadMoreLess>
-                  </ReviewText>)}
+                                  <ShowText>{this.props.body}</ShowText>
+                                  <ReadMoreLess><UpArrow></UpArrow><LinkText onMouseEnter={this.handleReadMoreEnter} onMouseLeave={this.handleReadMoreLeave} onClick={this.handleReadMoreClick}>Read less</LinkText></ReadMoreLess>
+                                </ReviewText>)
+                              : (<ReviewText>
+                                    <HideText>{this.props.body}</HideText><ContentFade></ContentFade>
+                                    <ReadMoreLess><DownArrow></DownArrow><LinkText onMouseEnter={this.handleReadMoreEnter} onMouseLeave={this.handleReadMoreLeave} onClick={this.handleReadMoreClick}>Read more</LinkText></ReadMoreLess>
+                                  </ReviewText>)}
 
         <div>
           <HelpfulNumber>
             <span>{this.props.helpful} people found this helpful</span>
           </HelpfulNumber>
           <ActionBar>
-              {this.state.clicked ? (<ThankYou>✓ Thank you for your feedback.</ThankYou>) : (<HelpfulButton onClick={this.handleClick} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>Helpful</HelpfulButton>)}
+              {this.state.clicked ? (<ThankYou>✓ Thank you for your feedback.</ThankYou>)
+                                  : (<HelpfulButton onClick={this.handleClick} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>Helpful</HelpfulButton>)}
             <TextSeparator>|</TextSeparator>Comment
             <TextSeparator>|</TextSeparator>Report Abuse
           </ActionBar>
