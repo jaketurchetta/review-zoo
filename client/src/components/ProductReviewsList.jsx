@@ -19,8 +19,9 @@ const KeywordsHeader = styled.h3`
   padding: 0px 0px 4px;
 `;
 
-const StyledLi = styled.li`
+const DropDownLi = styled.div`
   margin: 0px 0px 10px;
+  display: inline-block;
 `;
 
 const Dropbtn = styled.div`
@@ -36,27 +37,35 @@ const Dropbtn = styled.div`
 
 const DropDownContent = styled.div`
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
+  border: 1px solid #A9A9A9;
+  border-radius: 2px;
+  background-color: #FFFFFF;
+  height: auto;
+  min-width: 136px;
+  width: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  box-sizing: border-box;
+  overflow-y: auto;
+  padding: 8px 0px;
 `;
 
-const DropDownLi = styled(StyledLi)`
-  display: inline-block;
-`;
-
-const SubA = styled.a`
+const SubA = styled.div`
   color: black;
   padding: 2px 12px 1px 13px;
   margin: 0px 0px 1px;
   text-decoration: none;
+  outline: 0;
+  border: 1px solid transparent;
+  margin-left: 1px;
   display: block;
   text-align: left;
   font-family: 'Amazon Ember', Arial, sans-serif;
   font-size 13px;
   &:hover {
     background-color: #F5F5F5;
+    border-color: #e7e7e7;
+    border-top-color: #e7e7e7;
+    border-left-color: #e77600;
   }
 `;
 
@@ -84,20 +93,17 @@ const FilterArrow = styled.i`
   transform: rotate(45deg);
   left-margin: 20px;
   display: flex;
-  align-items: flex-end;
+  align-self: flex-end;
+  float: right;
 `;
 
 class ProductReviewsList extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      filterClicked: false
-    }
+    this.state = {}
     this.handleEnter = this.handleEnter.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
-    this.handleButtonClick = this.handleButtonClick.bind(this);
-    // this.handleListClick = this.handleListClick.bind(this);
   }
 
   handleEnter(event) {
@@ -110,15 +116,6 @@ class ProductReviewsList extends React.Component {
     event.target.style.cursor = 'default';
   }
 
-  handleButtonClick() {
-    console.log('clicked')
-    this.setState({
-      filterClicked: !this.state.filterClicked
-    })
-  }
-
-  // handleSelection filters the page based on the selection
-
   render() {
     return (
       <Wrapper>
@@ -128,12 +125,14 @@ class ProductReviewsList extends React.Component {
         </KeywordsDiv>
 
         <DropDownLi>
-          <Dropbtn onClick={this.handleButtonClick} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>{this.props.filter}<FilterArrow></FilterArrow></Dropbtn>
-          {this.state.filterClicked ? (<DropDownContent>
-                                          <SubA onClick={this.props.handleSelection('Top Reviews')}>Top Reviews</SubA>
-                                          <SubA onClick={this.props.handleSelection('Most Recent')}>Most Recent</SubA>
+          <Dropbtn onClick={() => this.props.handleButtonClick()} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}><span>{this.props.filter}</span><FilterArrow></FilterArrow></Dropbtn>
+          {this.props.filterClicked ? (<DropDownContent>
+                                          <SubA onClick={() => this.props.handleSelection('Top Reviews')}>Top Reviews</SubA>
+                                          <SubA onClick={() => this.props.handleSelection('Most Recent')}>Most Recent</SubA>
                                         </DropDownContent>)
-                          : (null)}
+                                    : (null)}
+          {this.props.filterClicked ? console.log('Should be true: ', this.props.filterClicked)
+                                    : (null)}
         </DropDownLi>
 
         <div>
@@ -155,10 +154,10 @@ class ProductReviewsList extends React.Component {
             helpful={review.helpful}
             helpfulHandler={this.props.helpfulHandler}/>)}
         </div>
+
       </Wrapper>
     )
   }
-
 }
 
 export default ProductReviewsList;

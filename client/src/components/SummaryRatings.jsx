@@ -98,6 +98,7 @@ const ByFeatureTitle = styled.span`
 const FeaturesDiv = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
 const FeatureRow = styled.div`
@@ -134,6 +135,12 @@ const WriteReviewButton = styled.button`
 const FeatureNumberSpan = styled.span`
   color: #767676;
   font-size: 13px;
+`;
+
+const JustifyRight = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 `;
 
 class SummaryRatings extends React.Component {
@@ -247,7 +254,7 @@ class SummaryRatings extends React.Component {
         </HowAmazonCalculates>
         {this.state.infoExpand ? (<InfoDiv>Amazon calculates a product’s star ratings based on a machine learned model instead of a raw data average. The model takes into account factors including the age of a rating, whether the ratings are from verified purchasers, and factors that establish reviewer trustworthiness.</InfoDiv>) : (null)}
 
-        <hr style={{width: '300px', color: '#CCCCCC', margin: '22px 0px', borderTop: '1px'}}></hr>
+        <hr style={{width: '300px', borderColor: '#CCCCCC', margin: '22px 0px', borderTop: '1px'}}></hr>
 
         <ByFeatureMargin>
           <ByFeatureTitle>By feature</ByFeatureTitle>
@@ -256,15 +263,17 @@ class SummaryRatings extends React.Component {
         <FeaturesDiv>
           <FeatureRow>
             <FeatureSpan>Aliquid rem</FeatureSpan>
-            <StarRatings
-                  rating={4.7}
-                  starRatedColor='#FFCE00'
-                  numberOfStars={5}
-                  name='rating'
-                  starDimension='17px'
-                  starSpacing='0px'
-                />
-            <FeatureNumberSpan>4.7</FeatureNumberSpan>
+            <JustifyRight>
+              <StarRatings
+                    rating={4.7}
+                    starRatedColor='#FFCE00'
+                    numberOfStars={5}
+                    name='rating'
+                    starDimension='17px'
+                    starSpacing='0px'
+                  />
+              <FeatureNumberSpan>4.7</FeatureNumberSpan>
+            </JustifyRight>
           </FeatureRow>
           <FeatureRow>
             <FeatureSpan>Quae deleniti ut</FeatureSpan>
@@ -312,7 +321,7 @@ class SummaryRatings extends React.Component {
                                       </HowAmazonCalculates>)}
           </FeaturesDiv>
 
-          <hr style={{width: '300px', color: '#CCCCCC', margin: '22px 0px', borderTop: '1px'}}></hr>
+          <hr style={{width: '300px', borderColor: '#CCCCCC', margin: '22px 0px', borderTop: '1px'}}></hr>
 
           <ReviewHeader>
             Review this product
@@ -324,7 +333,7 @@ class SummaryRatings extends React.Component {
             Write a customer review
           </WriteReviewButton>
 
-          <hr style={{width: '300px', color: '#CCCCCC', margin: '22px 0px', borderTop: '1px'}}></hr>
+          <hr style={{width: '300px', borderColor: '#CCCCCC', margin: '22px 0px', borderTop: '1px'}}></hr>
 
       </Wrapper>
     )
