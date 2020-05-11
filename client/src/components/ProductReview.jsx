@@ -137,6 +137,7 @@ const LinkText = styled.span`
   padding: 0px 0px 0px 5px;
 `;
 
+
 // CLASS COMPONENT
 
 class ProductReview extends React.Component {
@@ -150,10 +151,13 @@ class ProductReview extends React.Component {
     this.handleEnter = this.handleEnter.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.changeHeight = this.changeHeight.bind(this);
     this.handleReadMoreEnter = this.handleReadMoreEnter.bind(this);
     this.handleReadMoreLeave = this.handleReadMoreLeave.bind(this);
     this.handleReadMoreClick = this.handleReadMoreClick.bind(this);
+    this.handleSubjectEnter = this.handleSubjectEnter.bind(this);
+    this.handleSubjectLeave = this.handleSubjectLeave.bind(this);
+    this.handleCommentEnter = this.handleCommentEnter.bind(this);
+    this.handleCommentLeave = this.handleCommentLeave.bind(this);
   }
 
   handleEnter(event) {
@@ -191,16 +195,27 @@ class ProductReview extends React.Component {
     })
   }
 
-  changeHeight() {
-    var readmore = $('#readmore');
-    if (readmore.text() == 'Read more') {
-        readmore.text("Read less");
-    } else {
-        readmore.text("Read more");
-    }
+  handleSubjectEnter(event) {
+    event.target.style.textDecoration = 'underline';
+    event.target.style.color = '#C45500';
+    event.target.style.cursor = 'pointer';
+  }
 
-    $('.height').toggleClass("heightAuto");
-};
+  handleSubjectLeave(event) {
+    event.target.style.textDecoration = '';
+    event.target.style.color = '#111111';
+    event.target.style.cursor = 'default';
+  }
+
+  handleCommentEnter(event) {
+    event.target.style.color = '#C45500';
+    event.target.style.cursor = 'pointer';
+  }
+
+  handleCommentLeave(event) {
+    event.target.style.color = '#555555';
+    event.target.style.cursor = 'default';
+  }
 
   render() {
     return (
@@ -224,7 +239,7 @@ class ProductReview extends React.Component {
               starDimension='17px'
               starSpacing='0px'
             />
-            <Subject>
+            <Subject onMouseEnter={this.handleSubjectEnter} onMouseLeave={this.handleSubjectLeave}>
               <span> {this.props.subject}</span>
             </Subject>
         </RatingSubject>
@@ -265,8 +280,8 @@ class ProductReview extends React.Component {
           <ActionBar>
               {this.state.clicked ? (<ThankYou>✓ Thank you for your feedback.</ThankYou>)
                                   : (<HelpfulButton onClick={this.handleClick} onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>Helpful</HelpfulButton>)}
-            <TextSeparator>|</TextSeparator>Comment
-            <TextSeparator>|</TextSeparator>Report Abuse
+            <TextSeparator>|</TextSeparator><span onMouseEnter={this.handleCommentEnter} onMouseLeave={this.handleCommentLeave}>Comment</span>
+            <TextSeparator>|</TextSeparator><span onMouseEnter={this.handleCommentEnter} onMouseLeave={this.handleCommentLeave}>Report Abuse</span>
           </ActionBar>
         </div>
 

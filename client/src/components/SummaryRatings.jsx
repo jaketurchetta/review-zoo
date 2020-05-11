@@ -225,31 +225,33 @@ class SummaryRatings extends React.Component {
 
         <TableDiv>
           <table>
-            <tr>
-              <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>5 star </TextTD>
-              <td><Meter percent={(ratings.five_stars / ratings.total_ratings)}/></td>
-              <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>{Math.round((ratings.five_stars / ratings.total_ratings) * 100)}%</TextTD>
-            </tr>
-            <tr>
-              <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>4 star </TextTD>
-              <td><Meter percent={(ratings.four_stars / ratings.total_ratings)}/></td>
-              <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>{Math.round((ratings.four_stars / ratings.total_ratings) * 100)}%</TextTD>
-            </tr>
-            <tr>
-              <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>3 star </TextTD>
-              <td><Meter percent={(ratings.three_stars / ratings.total_ratings)}/></td>
-              <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>{Math.round((ratings.three_stars / ratings.total_ratings) * 100)}%</TextTD>
-            </tr>
-            <tr>
-              <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>2 star </TextTD>
-              <td><Meter percent={(ratings.two_stars / ratings.total_ratings)}/></td>
-              <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>{Math.round((ratings.two_stars / ratings.total_ratings) * 100)}%</TextTD>
-            </tr>
-            <tr>
-              <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>1 star </TextTD>
-              <td><Meter percent={(ratings.one_stars / ratings.total_ratings)}/></td>
-              <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>{Math.round((ratings.one_stars / ratings.total_ratings) * 100)}%</TextTD>
-            </tr>
+            <tbody>
+              <tr>
+                <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>5 star </TextTD>
+                <td><Meter percent={(ratings.five_stars / ratings.total_ratings)}/></td>
+                <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>{Math.round((ratings.five_stars / ratings.total_ratings) * 100)}%</TextTD>
+              </tr>
+              <tr>
+                <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>4 star </TextTD>
+                <td><Meter percent={(ratings.four_stars / ratings.total_ratings)}/></td>
+                <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>{Math.round((ratings.four_stars / ratings.total_ratings) * 100)}%</TextTD>
+              </tr>
+              <tr>
+                <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>3 star </TextTD>
+                <td><Meter percent={(ratings.three_stars / ratings.total_ratings)}/></td>
+                <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>{Math.round((ratings.three_stars / ratings.total_ratings) * 100)}%</TextTD>
+              </tr>
+              <tr>
+                <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>2 star </TextTD>
+                <td><Meter percent={(ratings.two_stars / ratings.total_ratings)}/></td>
+                <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>{Math.round((ratings.two_stars / ratings.total_ratings) * 100)}%</TextTD>
+              </tr>
+              <tr>
+                <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>1 star </TextTD>
+                <td><Meter percent={(ratings.one_stars / ratings.total_ratings)}/></td>
+                <TextTD onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>{Math.round((ratings.one_stars / ratings.total_ratings) * 100)}%</TextTD>
+              </tr>
+            </tbody>
           </table>
         </TableDiv>
 
