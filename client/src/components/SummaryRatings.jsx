@@ -73,6 +73,14 @@ const HowAmazonCalculates = styled.div`
   font-size: 13px;
   display: flex;
   align-items: center;
+  padding: 10px 0px 0px 0px;
+`;
+
+const SeeMoreLess = styled.div`
+  color: #0066C0;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
 `;
 
 const LinkText = styled.span`
@@ -319,13 +327,13 @@ class SummaryRatings extends React.Component {
                                                 />
                                             <FeatureNumberSpan>4.3</FeatureNumberSpan>
                                           </FeatureRow>
-                                          <HowAmazonCalculates>
+                                          <SeeMoreLess>
                                             <UpArrow></UpArrow><LinkText onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave} onClick={this.handleFeatureClick}>See less</LinkText>
-                                          </HowAmazonCalculates>
+                                          </SeeMoreLess>
                                         </div>)
-                                    : (<HowAmazonCalculates>
+                                    : (<SeeMoreLess>
                                         <DownArrow></DownArrow><LinkText onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave} onClick={this.handleFeatureClick}>See more</LinkText>
-                                      </HowAmazonCalculates>)}
+                                      </SeeMoreLess>)}
           </FeaturesDiv>
 
           <hr style={{width: '300px', borderColor: '#CCCCCC', margin: '22px 0px', borderTop: '1px'}}></hr>
