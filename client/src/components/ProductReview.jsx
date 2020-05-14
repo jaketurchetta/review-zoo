@@ -259,9 +259,12 @@ class ProductReview extends React.Component {
                             </div>) : (null)}
           {this.props.color !== null ? (<div>
                               <span>Color: {this.props.color}</span>
-                              <TextSeparator>|</TextSeparator>
                             </div>) : (null)}
-          {this.props.verified === 1 ? (<VerifiedPurchase>Verified Purchase</VerifiedPurchase>) : (null)}
+          {this.props.verified === 1 ? (<div>
+                                          <TextSeparator>|</TextSeparator>
+                                          <VerifiedPurchase>Verified Purchase</VerifiedPurchase>
+                                        </div>)
+                                     : (null)}
         </ReviewSpecs>
 
         {this.state.readMore ? (<ReviewText>

@@ -16,7 +16,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product_id: 10,
+      product_id: 6,
       reviews: [],
       ratings: [],
       filter: 'Top Reviews',
@@ -61,17 +61,16 @@ class App extends React.Component {
   getReviews(productid) {
     if (this.state.filter === 'Top Reviews') {
       return axios.get(`/products/${productid}/topreviews`)
+                  .catch(this.handleError)
     } else if (this.state.filter === 'Most Recent') {
       return axios.get(`/products/${productid}/recentreviews`)
+                  .catch(this.handleError)
     }
   }
 
   getRatings(productid) {
-    if (this.state.filter === 'Top Reviews') {
-      return axios.get(`/products/${productid}/ratings`)
-    } else if (this.state.filter === 'Most Recent') {
-
-    }
+    return axios.get(`/products/${productid}/ratings`)
+                .catch(this.handleError)
   }
 
   // HTTP REQUESTS - OTHER
