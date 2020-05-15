@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var db = require('../database/index.js');
+var morgan = require('morgan');
 
 // INVOKE EXPRESS
 var app = express();
@@ -12,6 +13,7 @@ const PORT = 2626;
 app.listen(PORT, console.log('Listening on PORT: ', PORT));
 
 // INITIATE MIDDLEWARE
+app.use( morgan('dev') )
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded({ extended: true }) );
 app.use( express.static(__dirname + '/../client/dist') );
