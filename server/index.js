@@ -7,7 +7,7 @@ var morgan = require('morgan');
 var app = express();
 
 // DECLARE PORT
-const PORT = 2626;
+const PORT = 3001;
 
 // LISTEN
 app.listen(PORT, console.log('Listening on PORT: ', PORT));

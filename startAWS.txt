@@ -1,0 +1,16 @@
+### Starting AWS
+Go to AWS
+Launch Instance
+Amazon Linux 2 AMI > t2 micro (Free tier eligible) >
+Review and Launch
+Step 6: Configure Security Group > Add Rule
+Type Custom TCP
+Protocol TCP
+Port Range 3001
+Source 0.0.0.0/0 # Accepts all incoming requests
+Step 7: Launch
+Make a new key-value pair # !IMPORTANT this is your password for connecting via SSH
+Click 'Launch'
+View Instances and click 'Connect'
+Follow the four instructions on "Connect to your instance - To Access your instance:"
+ssh -i <key-pem> <instance-id>

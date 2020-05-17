@@ -40,6 +40,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+database/config/
 
 # TypeScript v1 declaration files
 typings/
@@ -102,3 +103,4 @@ client/dist/bundle.js
 
 # TernJS port file
 .tern-port
+
