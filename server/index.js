@@ -15,7 +15,7 @@ app.listen(PORT, console.log('Listening on PORT: ', PORT));
 
 // INITIATE MIDDLEWARE
 app.use( morgan('dev') )
-app.use(f(req, res, next) => {
+app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
