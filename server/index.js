@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 app.use(cors());
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded({ extended: true }) );
-app.use( express.static(__dirname + '/../client/dist') );
+app.use( express.static(__dirname + '/client/dist') );
 
 // GET REVIEWS
 app.get('/products/:productid/topreviews', (req, res) => {
