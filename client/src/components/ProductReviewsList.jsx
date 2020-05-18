@@ -2,7 +2,6 @@ import React from 'react';
 import ProductReview from './ProductReview.jsx';
 import _ from 'underscore';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
   box-sizing: border-box;
