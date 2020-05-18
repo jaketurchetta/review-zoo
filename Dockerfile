@@ -1,13 +1,13 @@
 FROM node:latest
 
+RUN mkdir -p /src/app
+
 WORKDIR /src/app
 
-COPY package*.json ./
+COPY . /src/app
 
 RUN npm install
 
-COPY . .
-
 EXPOSE 3001
 
-CMD [ "npm", "run", "server-dev" ]
+CMD [ "npm", "start" ]
