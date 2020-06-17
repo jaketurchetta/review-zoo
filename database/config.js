@@ -1,5 +1,5 @@
 module.exports = {
-  host: '172.17.0.2',
+  host: 'localhost',
   user: 'root',
   password: '',
   database: 'amazon2'

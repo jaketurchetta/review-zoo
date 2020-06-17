@@ -21,6 +21,7 @@ const KeywordsHeader = styled.h3`
 const DropDownLi = styled.div`
   margin: 0px 0px 10px;
   display: inline-block;
+  z-index: 1000;
 `;
 
 const Dropbtn = styled.div`
