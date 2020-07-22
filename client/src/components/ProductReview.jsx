@@ -226,7 +226,7 @@ class ProductReview extends React.Component {
             <img src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" data-src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" style={{width: 34, height: 34}}></img>
           </Avatar>
           <div>
-            {this.props.anonymous === 0 ? (<span>{this.props.name}</span>) : (<span>Amazon User</span>)}
+            {this.props.anonymous === 0 ? (<span>{this.props.name}</span>) : (<span>Review Zoo User</span>)}
           </div>
         </Profile>
 

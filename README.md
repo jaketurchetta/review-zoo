@@ -1,2 +1,61 @@
-# customer-reviews
-Customer ratings and reviews, review filtering (recent/top/keywords), average reviews, and animations.
+# Customer Reviews
+---
+This project is an example of a typical customer reviews module for a retail product on an ecommerce website. Functionality includes customer ratings and reviews, review filtering (recent/top), average reviews, and variouse animations.
+
+> The app is built with React and React Styled Components on the front-end and Express and MySQL on the backend. The microservice was deployed using Docker and AWS EC2.
+
+- [Customer Reviews YouTube Demo](https://youtu.be/HAUF0t5K02k)
+
+![alt text](https://github.com/jaketurchetta/review-zoo/client/assets/ReviewZooImage.png)
+
+## Getting Started
+---
+Before starting, please have MySQL 5.7 installed. Edit the config.js file in the database directory, using your user / password credentials:
+
+```
+module.exports.mysqlConfig = {
+  host: 'localhost',
+  user: 'YourUsername',
+  password: 'YourPassword',
+  database: 'ReviewZoo'
+};
+```
+
+Download dependencies:
+
+```
+npm install
+```
+
+Seed the database:
+
+```
+npm run seed
+```
+
+>*Note: if you have a password associated with you MySQL username you will have to edit the seed script in the package.json to include password prompting.*
+*It should look something like this:*
+```
+mysql -u root -p < schema.sql
+```
+
+Run webpack build:
+
+```
+npm run webpack
+```
+
+Start the server:
+
+```
+npm start
+```
+
+## Development
+---
+
+## Requirements
+---
+
+## Related Projects
+---

@@ -265,9 +265,9 @@ class SummaryRatings extends React.Component {
 
 
         <HowAmazonCalculates>
-          {this.state.infoExpand ? (<UpArrow></UpArrow>) : (<DownArrow></DownArrow>)}<LinkText onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave} onClick={this.handleInfoClick}>How does Amazon calculate star ratings?</LinkText>
+          {this.state.infoExpand ? (<UpArrow></UpArrow>) : (<DownArrow></DownArrow>)}<LinkText onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave} onClick={this.handleInfoClick}>How does Review Zoo calculate star ratings?</LinkText>
         </HowAmazonCalculates>
-        {this.state.infoExpand ? (<InfoDiv>Amazon calculates a product’s star ratings based on a machine learned model instead of a raw data average. The model takes into account factors including the age of a rating, whether the ratings are from verified purchasers, and factors that establish reviewer trustworthiness.</InfoDiv>) : (null)}
+        {this.state.infoExpand ? (<InfoDiv>Review Zoo calculates a product’s star ratings based on a machine learned model instead of a raw data average. The model takes into account factors including the age of a rating, whether the ratings are from verified purchasers, and factors that establish reviewer trustworthiness.</InfoDiv>) : (null)}
 
         <hr style={{width: '300px', borderColor: '#CCCCCC', margin: '22px 0px', borderTop: '1px'}}></hr>
 
