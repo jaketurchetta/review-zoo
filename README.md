@@ -1,5 +1,5 @@
 # Customer Reviews
----
+
 This project is an example of a typical customer reviews module for a retail product on an ecommerce website. Functionality includes customer ratings and reviews, review filtering (recent/top), average reviews, and variouse animations.
 
 > The app is built with React and React Styled Components on the front-end and Express and MySQL on the backend. The microservice was deployed using Docker and AWS EC2.
@@ -9,7 +9,7 @@ This project is an example of a typical customer reviews module for a retail pro
 ![alt text](client/assets/ReviewZooImage.png?raw=true)
 
 ## Getting Started
----
+
 Before starting, please have MySQL 5.7 installed. Edit the config.js file in the database directory, using your user / password credentials:
 
 ```
@@ -52,10 +52,30 @@ npm start
 ```
 
 ## Development
----
+
+Start development server:
+
+```
+npm run server-dev
+```
+
+Start watching webpack build to compile as changes are made:
+
+```
+npm run react-dev
+```
+
+Run tests:
+
+```
+npm test
+```
 
 ## Requirements
----
+
+- Node
+- MySQL
 
 ## Related Projects
----
+
+- https://github.com/hackreactor5group/video-carousel
