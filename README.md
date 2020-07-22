@@ -1,4 +1,4 @@
-# Customer Reviews
+# Review Zoo
 
 This project is an example of a typical customer reviews module for a retail product on an ecommerce website. Functionality includes customer ratings and reviews, review filtering (recent/top), average reviews, and variouse animations.
 
