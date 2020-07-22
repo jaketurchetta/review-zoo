@@ -6,7 +6,7 @@ This project is an example of a typical customer reviews module for a retail pro
 
 - [Customer Reviews YouTube Demo](https://youtu.be/HAUF0t5K02k)
 
-![alt text](https://github.com/jaketurchetta/review-zoo/client/assets/ReviewZooImage.png)
+![alt text](client/assets/ReviewZooImage.png?raw=true)
 
 ## Getting Started
 ---
