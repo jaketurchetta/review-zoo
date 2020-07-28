@@ -1,6 +1,6 @@
 # Review Zoo
 
-This project is an example of a typical customer reviews module for a retail product on an ecommerce website. Functionality includes customer ratings and reviews, review filtering (recent/top), average reviews, and variouse animations.
+This project is an example of a typical customer reviews module for a retail product on an ecommerce website. Functionality includes customer ratings and reviews, review filtering (recent/top), average reviews, and various animations.
 
 > The app is built with React and React Styled Components on the front-end and Express and MySQL on the backend. The microservice was deployed using Docker and AWS EC2.
 
