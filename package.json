@@ -32,7 +32,7 @@
     "react-is": "^16.13.1",
     "readmore-js": "^2.2.1",
     "styled-components": "^5.1.0",
-    "underscore": "^1.10.2"
+    "underscore": "^1.12.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
